@@ -1,4 +1,4 @@
-import { schema, CustomMessages } from '@ioc:Adonis/Core/Validator'
+import { schema, CustomMessages, rules } from '@ioc:Adonis/Core/Validator'
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
 
 export default class ViagemValidator {
@@ -23,7 +23,18 @@ export default class ViagemValidator {
    *     ])
    *    ```
    */
-  public schema = schema.create({})
+  public schema = schema.create({
+    name: schema.string({},[
+      rules.required()
+    ]),
+    data: schema.string({},[
+      rules.required()
+    ]),
+    lugar: schema.string({},[
+      rules.required()
+    ]),
+  })
+  
 
   /**
    * Custom messages for validation failures. You can make use of dot notation `(.)`
@@ -36,5 +47,7 @@ export default class ViagemValidator {
    * }
    *
    */
-  public messages: CustomMessages = {}
+  public messages: CustomMessages = {
+    required: "O {{field}} é obrigatório para cadastrar o tópico!!!!",
+  }
 }
