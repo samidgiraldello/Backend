@@ -1,9 +1,8 @@
 import { DateTime } from 'luxon'
 import { 
-  BaseModel, BelongsTo, belongsTo,column, HasMany,
-  hasMany, ManyToMany, manyToMany
+  BaseModel,column
 } from '@ioc:Adonis/Lucid/Orm'
-import 
+
 
 export default class Viagem extends BaseModel {
   @column({ isPrimary: true })

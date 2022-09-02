@@ -1,39 +1,37 @@
- import { MessageBuilder } from '@ioc:Adonis/Core/Helpers'
+ 
 import type { HttpContextContract } from '@ioc:Adonis/Core/HttpContext'
-import Request from '@ioc:Adonis/Core/Request'
- import Viagems from 'App/Models/Topip'
- import Viagems from 'App/Validators/TopicValidator'
-import authConfig from '../../../config/auth'
+import Viagem from '../../Models/Viagem'
+import ViagemValidator from '../../Validators/ViagemValidator'
 
 
 export default class ViagemController {
      public async index({ }: HttpContextContract) {
-       const Viagem = await Viagem.all()
-       return Viagem
+       const viagem = await Viagem.all()
+       return viagem
      }
    
      public async store({ request }: HttpContextContract) {
-       const data = await request.validate(ViagemController)
-       const Viagem = await Viagem.create({ ...data })
-       return Viagem
+       const data = await request.validate(ViagemValidator)
+       const viagem = await Viagem.create({ ...data })
+       return viagem
      }
    
      public async show({ params, response }: HttpContextContract) {
        try {
-         const Viagem = await Viagem.findOrFail(params.id)
-         return Viagem
+         const viagem = await Viagem.findOrFail(params.id)
+         return viagem
        } catch (error) {
          response.status(400).send("Viagem não encontrado!!!")
        }
      }
    
      public async update({ request, params, response }: HttpContextContract) {
-       const { name } = await request.validate(ViagemController)
+       const { name } = await request.validate(ViagemValidatorr)
        try {
-         const Viagem = await Viagem.findOrFail(params.id)
-         Viagem.name = name
-         await Viagem.save()
-         return Viagem
+         const viagem = await Viagem.findOrFail(params.id)
+         viagem.name = name
+         await viagem.save()
+         return viagem
    
        } catch (error) {
          response.status(400).send("Viagem não encontrado!!!")
