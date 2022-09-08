@@ -1,6 +1,6 @@
 ######### Cadastro Viagem
 
-POST http://127.0.0.1:3333/register HTTP/1.1
+POST http://127.0.0.1:3333/viagem HTTP/1.1
 Content-Type: application/json
 Authorization: Bearer MQ.PumXyNpu9QmizvQmizvQRjFVyQmH6nQXA-Lyh_YESHiupUXhExRgJG7ep3T4OnExz
  
