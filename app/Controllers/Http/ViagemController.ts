@@ -26,10 +26,12 @@ export default class ViagemController {
      }
    
      public async update({ request, params, response }: HttpContextContract) {
-       const { name } = await request.validate(ViagemValidatorr)
+       const { name, data, lugar } = await request.validate(ViagemValidator)
        try {
          const viagem = await Viagem.findOrFail(params.id)
          viagem.name = name
+         viagem.data = data
+         viagem.lugar = lugar
          await viagem.save()
          return viagem
    
@@ -40,9 +42,9 @@ export default class ViagemController {
    
      public async destroy({ params, response }: HttpContextContract) {
        try {
-         const Viagem = await Viagem.findOrFail(params.id)
-         await Viagem.delete()
-         return Viagem
+         const viagem = await Viagem.findOrFail(params.id)
+         await viagem.delete()
+         return viagem
        } catch (error) {
          response.status(400).send("Viagem não encontrado!!!")
        }

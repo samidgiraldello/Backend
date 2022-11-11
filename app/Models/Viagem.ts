@@ -9,7 +9,7 @@ export default class Viagem extends BaseModel {
   public id: number 
 
   @column()
-  public nome: string
+  public name: string
 
   @column()
   public data: string
