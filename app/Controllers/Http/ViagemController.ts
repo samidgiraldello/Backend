@@ -26,12 +26,13 @@ export default class ViagemController {
      }
    
      public async update({ request, params, response }: HttpContextContract) {
-       const { name, data, lugar } = await request.validate(ViagemValidator)
+       const { data, hotel, lugar, nome } = await request.validate(ViagemValidator)
        try {
          const viagem = await Viagem.findOrFail(params.id)
-         viagem.name = name
          viagem.data = data
+         viagem.hotel= hotel
          viagem.lugar = lugar
+         viagem.nome = nome
          await viagem.save()
          return viagem
    
