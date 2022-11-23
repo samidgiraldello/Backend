@@ -9,13 +9,16 @@ export default class Viagem extends BaseModel {
   public id: number 
 
   @column()
-  public name: string
-
-  @column()
   public data: string
 
   @column()
+  public hotel: string
+
+  @column()
   public lugar: string
+
+  @column()
+  public nome: string
 
   @column.dateTime({ autoCreate: true })
   public createdAt: DateTime
