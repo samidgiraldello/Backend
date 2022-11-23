@@ -24,13 +24,16 @@ export default class ViagemValidator {
    *    ```
    */
   public schema = schema.create({
-    name: schema.string({},[
-      rules.required()
-    ]),
     data: schema.string({},[
       rules.required()
     ]),
+    hotel: schema.string({},[
+      rules.required()
+    ]),
     lugar: schema.string({},[
+      rules.required()
+    ]),
+    nome: schema.string({},[
       rules.required()
     ]),
   })
